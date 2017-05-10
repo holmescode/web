@@ -17,7 +17,7 @@ script:
   - dotnet restore $TRAVIS_BUILD_DIR/src/holmescode.com.csproj
   - dotnet publish $TRAVIS_BUILD_DIR/src/holmescode.com.csproj -c Release -o $TRAVIS_BUILD_DIR/dist
   - ls $TRAVIS_BUILD_DIR/dist
-  - docker build -t holmescode/web:latest -t holmescode:/web:$TRAVIS_BUILD_NUMBER .
+  - docker build -t holmescode/web:latest -t holmescode/web:$TRAVIS_BUILD_NUMBER .
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
