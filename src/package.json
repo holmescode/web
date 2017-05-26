@@ -5,10 +5,18 @@
   "devDependencies": {
     "bootstrap-sass": "^3.3.7",
     "bootswatch-sass": "^3.2.0",
+    "browserify": "^14.3.0",
     "gulp": "3.9.1",
     "gulp-cssmin": "^0.2.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "3.1.0",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "jquery": "^2.2.4",
+    "jquery-validation": "^1.14.0",
+    "jquery-validation-unobtrusive": "^3.2.6"
   }
 }
