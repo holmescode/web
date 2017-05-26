@@ -10,6 +10,7 @@ script:
   - cd src && gulp && cd ..
   - dotnet restore $TRAVIS_BUILD_DIR/src/holmescode.com.csproj
   - dotnet publish $TRAVIS_BUILD_DIR/src/holmescode.com.csproj -c Release -o $TRAVIS_BUILD_DIR/dist
+  - rm -rf src/node_modules
   - docker build -t holmescode/web:latest -t holmescode/web:$TRAVIS_BUILD_NUMBER .
 
 after_success:

@@ -34,6 +34,7 @@ msbuild.wrn
 
 # Ignore static files which are compiled from source (SASS, TS, etc)
 css/
+js/
 
 # Ignore node_modules
 node_modules
