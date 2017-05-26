@@ -31,3 +31,9 @@ msbuild.wrn
 
 # Visual Studio 2015
 .vs/
+
+# Ignore static files which are compiled from source (SASS, TS, etc)
+css/
+
+# Ignore node_modules
+node_modules
