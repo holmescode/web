@@ -5,7 +5,7 @@ dotnet: 1.0.4
 dist: trusty
 
 script:
-  - npm install
+  - cd src && npm install && cd ..
   - npm install gulp -g
   - dotnet restore $TRAVIS_BUILD_DIR/src/holmescode.com.csproj
   - dotnet publish $TRAVIS_BUILD_DIR/src/holmescode.com.csproj -c Release -o $TRAVIS_BUILD_DIR/dist
