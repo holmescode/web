@@ -7,9 +7,9 @@ dist: trusty
 script:
   - cd src && npm install && cd ..
   - npm install gulp -g
+  - cd src && gulp && cd ..
   - dotnet restore $TRAVIS_BUILD_DIR/src/holmescode.com.csproj
   - dotnet publish $TRAVIS_BUILD_DIR/src/holmescode.com.csproj -c Release -o $TRAVIS_BUILD_DIR/dist
-  - ls $TRAVIS_BUILD_DIR/dist
   - docker build -t holmescode/web:latest -t holmescode/web:$TRAVIS_BUILD_NUMBER .
 
 after_success:
