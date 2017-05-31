@@ -1,15 +1,21 @@
-FROM microsoft/dotnet:1.1-runtime
+FROM node:7-alpine
+
+RUN apk add --update curl bash && \
+    rm -rf /var/cache/apk/*
+
+COPY docker-entrypoint.sh /bin
 
 WORKDIR /var/service
 
-COPY docker-entrypoint.sh /bin
-COPY dist .
+COPY package.json .
+COPY dist ./dist
+COPY bin ./bin
+COPY node_modules ./node_modules
 
-EXPOSE 5000/tcp
-ENV ASPNETCORE_URLS http://*:5000
-ENV ASPNETCORE_ENVIRONMENT Production
+ENV NODE_ENV production
+EXPOSE 5000
 
-HEALTHCHECK CMD curl --fail http://localhost:5000/ || exit 1
+HEALTHCHECK CMD curl --fail http://localhost:5000/health || exit 1
 
 ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["holmescode-web"]
+CMD ["web"]

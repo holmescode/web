@@ -1,19 +1,15 @@
-language: csharp
-solution: ./src/holmescode.com.csproj
-mono: none
-dotnet: 1.0.4
+language: node_js
+node_js:
+  - '7'
 dist: trusty
 
 script:
-  - cd src && npm install && cd ..
-  - npm install gulp -g
-  - cd src && gulp && cd ..
-  - dotnet restore $TRAVIS_BUILD_DIR/src/holmescode.com.csproj
-  - dotnet publish $TRAVIS_BUILD_DIR/src/holmescode.com.csproj -c Release -o $TRAVIS_BUILD_DIR/dist
-  - rm -rf src/node_modules
+  - npm install
+  - npm run build
+  - npm prune --production
   - docker build -t holmescode/web:latest -t holmescode/web:$TRAVIS_BUILD_NUMBER .
 
 after_success:
-  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
-  - docker push holmescode/web:$TRAVIS_BUILD_NUMBER
-  - docker push holmescode/web:latest
+ - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+ - docker push holmescode/deploy-webhook:$TRAVIS_BUILD_NUMBER
+ - docker push holmescode/deploy-webhook:latest
