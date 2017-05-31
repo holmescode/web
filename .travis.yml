@@ -11,5 +11,5 @@ script:
 
 after_success:
  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
- - docker push holmescode/deploy-webhook:$TRAVIS_BUILD_NUMBER
- - docker push holmescode/deploy-webhook:latest
+ - docker push holmescode/web:$TRAVIS_BUILD_NUMBER
+ - docker push holmescode/web:latest
